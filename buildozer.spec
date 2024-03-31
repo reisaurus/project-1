@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3==3.7.6,kivy==2.3.0, pandas, peewee, appdirs, BeautifulSoup4, frozendict, multitasking, hostpython3==3.7.6,p illow
+requirements =python3==3.7.6,kivy==2.3.0,pandas,peewee,appdirs,BeautifulSoup4,frozendict,multitasking,hostpython3==3.7.6,pillow
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
