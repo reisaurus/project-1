@@ -1,0 +1,620 @@
+# my.kv
+
+# Intro
+WindowManager:
+    checkdataWindow:
+    announcementsWindow:
+    logoutWindow:
+    create:
+    updatedataWindow:
+    login:
+    main:
+
+<CheckDataWindow>:
+    FloatLayout:
+        size: root.width, root.height
+
+        Label:
+            text: "User Data"
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"center_x": 0.5, "top": 0.9}
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+        Label:
+            id: first_name_label
+            text: "First name: "
+            size_hint: None, None
+            size: 120, 30
+            pos_hint: {"center_x": 0.5, "center_y": 0.7}
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        Label:
+            text: "Last name: "
+            id: last_name_label
+            size_hint: None, None
+            size: 120, 30
+            pos_hint: {"center_x": 0.5, "center_y": 0.65}
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        Label:
+            text: "Middle name: "
+            id: middle_name_label
+            size_hint: None, None
+            size: 120, 30
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        Label:
+            id: birthday_label
+            text: "Birthday: "
+            size_hint: None, None
+            size: 120, 30
+            pos_hint: {"center_x": 0.5, "center_y": 0.55}
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        Label:
+            id: address_label
+            text: "Address: "
+            size_hint: None, None
+            size: 120, 30
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        Label:
+            id: email_label
+            text: "Email: "
+            size_hint: None, None
+            size: 120, 30
+            pos_hint: {"center_x": 0.5, "center_y": 0.45}
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        Label:
+            id: contact_label
+            text: "Contact: "
+            size_hint: None, None
+            size: 120, 30
+            pos_hint: {"center_x": 0.5, "center_y": 0.4}
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        Label:
+            id: password_label
+            text: "Password: "
+            size_hint: None, None
+            size: 120, 30
+            pos_hint: {"center_x": 0.5, "center_y": 0.35}
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        Button:
+            pos_hint:{"x":0.04,"y":0.9}
+            size_hint: 0.15, 0.08
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Back"
+            on_release:
+                root.manager.transition.direction = "right"
+                app.root.current = 'main'
+
+        Button:
+            text: "Update data"
+            size_hint: None, None
+            size: 200, 50  # Adjust the size as needed
+            pos_hint: {"center_x": 0.5, "center_y": 0.2}
+            on_release: app.root.current = 'updatedataWindow'
+
+<updatedataWindow>:
+    first_name: first_name
+    last_name: last_name
+    middle_name: middle_name
+    bmonth: bmonth
+    bday: bday
+    byear: byear
+    district: district
+    barangay: barangay
+    email: email
+    contact_number: contact_number
+    password: password
+
+    FloatLayout:
+        size: root.width, root.height
+
+        Label:
+            text: "Update Data"
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"center_x": 0.5, "top": 0.9}
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+        Label:
+            size_hint: 0.6, 0.12
+            pos_hint: {"x":-0.1, "top":0.91}
+            text: "First Name: "
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        TextInput:
+            id: first_name
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.1 , "top":0.83}
+            size_hint: 0.8, 0.05
+
+        Label:
+            size_hint: 0.6,0.12
+            pos_hint: {"x":-0.1, "top":0.82}
+            text: "Last Name: "
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        TextInput:
+            id: last_name
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.1 , "top":0.75}
+            size_hint: 0.8, 0.05
+
+        Label:
+            size_hint: 0.5,0.12
+            pos_hint: {"x":0.05 , "top":0.73}
+            text: "Middle Name (Optional): "
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        TextInput:
+            id: middle_name
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.1 , "top":0.66}
+            size_hint: 0.8, 0.05
+
+        Label:
+            size_hint: 0.5,0.12
+            pos_hint: {"x":0.25 , "top":0.652}
+            text: "Birthday Information (NUMBERS only)"
+            font_size: (root.width**2 + root.height**2) / 17**4
+
+        Label:
+            size_hint: 0.5,0.12
+            pos_hint: {"x":0.01, "top":0.63}
+            text: "Month: "
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        TextInput:
+            id: bmonth
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.19 , "top":0.56}
+            size_hint: 0.13, 0.05
+
+        Label:
+            size_hint: 0.5,0.12
+            pos_hint: {"x":0.15, "top":0.63}
+            text: "Day: "
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        TextInput:
+            id: bday
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.35 , "top":0.56}
+            size_hint: 0.1, 0.05
+
+        Label:
+            size_hint: 0.5,0.12
+            pos_hint: {"x":0.4, "top":0.63}
+            text: "Year: "
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        TextInput:
+            id: byear
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.5 , "top":0.56}
+            size_hint: 0.3, 0.05
+
+        Label:
+            size_hint: 0.5,0.12
+            pos_hint: {"x":-0.08 , "top":0.54}
+            text: "District: "
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        TextInput:
+            id: district
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.1 , "top":0.46}
+            size_hint: 0.35, 0.05
+
+        Label:
+            size_hint: 0.5,0.12
+            pos_hint: {"x":0.4 , "top":0.54}
+            text: "Barangay: "
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        TextInput:
+            id: barangay
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.5 , "top":0.46}
+            size_hint: 0.4, 0.05
+
+
+        Label:
+            size_hint: 0.5,0.12
+            pos_hint: {"x":-0.095 , "top":0.45}
+            text: "Email: "
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        TextInput:
+            id: email
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.1 , "top":0.38}
+            size_hint: 0.8, 0.05
+
+        Label:
+            size_hint: 0.5,0.12
+            pos_hint: {"x":-0.01 , "top":0.37}
+            text: "Contact Number: "
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        TextInput:
+            id: contact_number
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.1 , "top":0.3}
+            size_hint: 0.8, 0.05
+
+        Label:
+            size_hint: 0.5,0.12
+            pos_hint: {"x":-0.06 , "top":0.28}
+            text: "Password: "
+            font_size: (root.width**2 + root.height**2) / 16**4
+
+        TextInput:
+            id: password
+            password: True
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.1 , "top":0.21}
+            size_hint: 0.8, 0.05
+
+    Button:
+        text: "Confirm"
+        size_hint: None, None
+        size: 200, 70
+        pos_hint: {"center_x": 0.5, "center_y": 0.10}
+        on_release: root.update_info()
+
+    Button:
+        pos_hint:{"x":0.04,"y":0.9}
+        size_hint: 0.15, 0.08
+        font_size: (root.width**2 + root.height**2) / 17**4
+        text: "Back"
+        on_release:
+            root.manager.transition.direction = "right"
+            app.root.current = 'checkdataWindow'
+
+
+
+
+<CreateAccountWindow>:
+    name: "create"
+
+    first_name: first_name
+    last_name: last_name
+    middle_name: middle_name
+    bmonth: bmonth
+    bday: bday
+    byear: byear
+    district: district
+    barangay: barangay
+    email: email
+    contact_number: contact_number
+    password: password
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                text: "Create an Account"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.6, 0.12
+                pos_hint: {"x":-0.1, "top":0.91}
+                text: "First Name: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                id: first_name
+                font_size: (root.width**2 + root.height**2) / 15**4
+                multiline: False
+                pos_hint: {"x": 0.1 , "top":0.83}
+                size_hint: 0.8, 0.05
+
+            Label:
+                size_hint: 0.6,0.12
+                pos_hint: {"x":-0.1, "top":0.82}
+                text: "Last Name: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                id: last_name
+                font_size: (root.width**2 + root.height**2) / 15**4
+                multiline: False
+                pos_hint: {"x": 0.1 , "top":0.75}
+                size_hint: 0.8, 0.05
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0.05 , "top":0.73}
+                text: "Middle Name (Optional): "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                id: middle_name
+                font_size: (root.width**2 + root.height**2) / 15**4
+                multiline: False
+                pos_hint: {"x": 0.1 , "top":0.66}
+                size_hint: 0.8, 0.05
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0.25 , "top":0.652}
+                text: "Birthday Information (NUMBERS only)"
+                font_size: (root.width**2 + root.height**2) / 17**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0.01, "top":0.63}
+                text: "Month: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                id: bmonth
+                font_size: (root.width**2 + root.height**2) / 15**4
+                multiline: False
+                pos_hint: {"x": 0.19 , "top":0.56}
+                size_hint: 0.13, 0.05
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0.15, "top":0.63}
+                text: "Day: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                id: bday
+                font_size: (root.width**2 + root.height**2) / 15**4
+                multiline: False
+                pos_hint: {"x": 0.35 , "top":0.56}
+                size_hint: 0.1, 0.05
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0.4, "top":0.63}
+                text: "Year: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                id: byear
+                font_size: (root.width**2 + root.height**2) / 15**4
+                multiline: False
+                pos_hint: {"x": 0.5 , "top":0.56}
+                size_hint: 0.3, 0.05
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":-0.08 , "top":0.54}
+                text: "District: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                id: district
+                font_size: (root.width**2 + root.height**2) / 15**4
+                multiline: False
+                pos_hint: {"x": 0.1 , "top":0.46}
+                size_hint: 0.35, 0.05
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0.4 , "top":0.54}
+                text: "Barangay: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                id: barangay
+                font_size: (root.width**2 + root.height**2) / 15**4
+                multiline: False
+                pos_hint: {"x": 0.5 , "top":0.46}
+                size_hint: 0.4, 0.05
+
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":-0.095 , "top":0.45}
+                text: "Email: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                id: email
+                font_size: (root.width**2 + root.height**2) / 15**4
+                multiline: False
+                pos_hint: {"x": 0.1 , "top":0.38}
+                size_hint: 0.8, 0.05
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":-0.01 , "top":0.37}
+                text: "Contact Number: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                id: contact_number
+                font_size: (root.width**2 + root.height**2) / 15**4
+                multiline: False
+                pos_hint: {"x": 0.1 , "top":0.3}
+                size_hint: 0.8, 0.05
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":-0.06 , "top":0.28}
+                text: "Password: "
+                font_size: (root.width**2 + root.height**2) / 16**4
+
+            TextInput:
+                id: password
+                password: True
+                font_size: (root.width**2 + root.height**2) / 15**4
+                multiline: False
+                pos_hint: {"x": 0.1 , "top":0.21}
+                size_hint: 0.8, 0.05
+
+        Button:
+            pos_hint:{"x":0.04,"y":0.9}
+            size_hint: 0.15, 0.08
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Back"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+
+        Button:
+            pos_hint:{"x":0.7,"y":0.03}
+            size_hint: 0.25, 0.1
+            text: "Submit"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+
+<LoginWindow>:
+    name: "login"
+
+    email: email
+    password: password
+
+    FloatLayout:
+
+        Label:
+            text:"BayanNET"
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.34, "top":0.95}
+            size_hint: 0.35, 0.15
+
+        Label:
+            text:"Quezon City, we'll connect."
+            font_size: (root.width**2 + root.height**2) / 17**4
+            pos_hint: {"x":0.34, "top":0.9}
+            size_hint: 0.35, 0.15
+
+        Label:
+            text:"Email: "
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0.0, "top":0.8}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: email
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            pos_hint: {"x": 0.1 , "top":0.7}
+            size_hint: 0.8, 0.08
+
+        Label:
+            text:"Password: "
+            font_size: (root.width**2 + root.height**2) / 14**4
+            pos_hint: {"x":0.05, "top":0.65}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: password
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.1 , "top":0.55}
+            size_hint: 0.8, 0.08
+
+        Button:
+            pos_hint:{"x":0.2,"y":0.25}
+            size_hint: 0.6, 0.15
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Login"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginBtn()
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.11}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Click to Register"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
+
+
+<MainWindow>:
+
+    FloatLayout:
+        size: root.width, root.height
+
+        Label:
+            id: user_data_label
+            text: "Welcome, [firstname]"
+            size_hint: None, None
+            size: self.texture_size
+            multiline: True
+            pos_hint: {"center_x": 0.5, "top": 0.8}
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+        Label:
+            text: "You are registered in your respective district!"
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"center_x": 0.5, "top": 0.75}
+            font_size: (root.width**2 + root.height**2) / 17**4
+
+        Button:
+            text: "User Data"
+            size_hint: None, None
+            size: 200, 50  # Adjust the size as needed
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}
+            on_release: app.root.current = 'checkdataWindow'
+
+        Button:
+            text: "See Announcements"
+            size_hint: None, None
+            size: 200, 70  # Adjust the size as needed
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            on_release: app.root.current = 'announcementsWindow'
+
+
+        Button:
+            pos_hint:{"x":0.7,"y":0.03}
+            size_hint: 0.25, 0.1
+            text: "Log Out"
+            on_release:
+                root.manager.transition.direction = "down"
+                app.root.current = 'login'
+
+<AnnouncementsWindow>:
+    FloatLayout:
+        Label:
+            text: "Announcements Window"
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"center_x": 0.5, "top": 0.9}
+
+        Button:
+            pos_hint:{"x":0.04,"y":0.9}
+            size_hint: 0.15, 0.08
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Back"
+            on_release:
+                root.manager.transition.direction = "left"
+                app.root.current = 'main'
+
+
