@@ -311,8 +311,11 @@ android.allow_backup = True
 # android.debug_artifact = apk
 
 #
-# Python for android (p4a) specific
+# Python for android () specific
 #
+
+# (str) python-for-android branch to use, defaults to master
+p4a.branch = develop
 
 # (str) python-for-android URL to use for checkout
 #p4a.url =
